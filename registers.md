@@ -6,6 +6,12 @@
 
 ## Development
 
+Registers are currently stored in a `Record` just like the other data types on the Network (Chunks and Spends). Those `Record`s have a fixed size limit that is configurable but it affects all other data types as well. This limit is currently 5mb.
+
+Also we need to keep in mind that each *Register* entry (one entry = one version) comes along with its CRDT data and signatures so that’s an extra constant weight for each entry (roughly 500 bytes).
+
+https://safenetforum.org/t/safe-api-registers/39182/85
+
 * local first storage means [local first software](https://www.inkandswitch.com/local-first/)
 * synchronising over Safe Network with multiple replicas using underlying MerkleReg CRDT from the rust [crdts](https://crates.io/crates/crdts) crate. There are a lot more data types in there too.
 * a history of all previous states of the Register and its entries
